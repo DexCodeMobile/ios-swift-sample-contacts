@@ -103,16 +103,25 @@ class KDetailViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("infoCell") as UITableViewCell
         
-        let lblTitle = UILabel(frame: CGRectMake(10, 0, 80, cell.frame.size.height))
+        if let titleView = cell.viewWithTag(10) {
+            if let valueView = cell.viewWithTag(11) {
+                return cell
+            }
+        }
+        
+        cell.layer.shouldRasterize = true;
+        cell.layer.rasterizationScale = UIScreen.mainScreen().scale
+        
+        let lblTitle = UILabel()
+        lblTitle.tag = 10
         cell.addSubview(lblTitle)
         let x: CGFloat = lblTitle.frame.origin.x+lblTitle.frame.size.width
-        let lblValue = UILabel(frame: CGRectMake(x, 0, cell.frame.size.width-x, cell.frame.size.height))
-        lblValue.backgroundColor = UIColor.brownColor()
+        let lblValue = UILabel()
+        lblValue.tag = 11
         lblValue.numberOfLines = 2
-        lblValue.contentMode = UIViewContentMode.ScaleToFill
         lblValue.lineBreakMode = NSLineBreakMode.ByWordWrapping
         cell.addSubview(lblValue)
-        
+                
         lblTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
         lblValue.setTranslatesAutoresizingMaskIntoConstraints(false)
         
@@ -122,18 +131,16 @@ class KDetailViewController: UIViewController, UITableViewDataSource, UITableVie
         
         cell.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-[lblTitle(80)]-[lblValue]-|", options: nil, metrics: nil, views: viewsDict))
+                "H:|-10-[lblTitle(80)]-[lblValue]-|", options: nil, metrics: nil, views: viewsDict))
         
         cell.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-[lblTitle]-|",
-                options: nil, metrics: nil, views: viewsDict))
+                "V:|-[lblTitle]-|", options: nil, metrics: nil, views: viewsDict))
         
         cell.addConstraints(
             NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|-[lblValue]-|", options: nil, metrics: nil,
-                views: viewsDict))
-                
+                "V:|-[lblValue]-|", options: nil, metrics: nil, views: viewsDict))
+        
         let itemlist: ITEMLIST = ITEMLIST(rawValue: indexPath.row)!
         switch (itemlist) {
         case .Gender:
