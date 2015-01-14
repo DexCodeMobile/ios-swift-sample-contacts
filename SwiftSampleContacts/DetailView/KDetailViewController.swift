@@ -107,8 +107,33 @@ class KDetailViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.addSubview(lblTitle)
         let x: CGFloat = lblTitle.frame.origin.x+lblTitle.frame.size.width
         let lblValue = UILabel(frame: CGRectMake(x, 0, cell.frame.size.width-x, cell.frame.size.height))
+        lblValue.backgroundColor = UIColor.brownColor()
+        lblValue.numberOfLines = 2
+        lblValue.contentMode = UIViewContentMode.ScaleToFill
+        lblValue.lineBreakMode = NSLineBreakMode.ByWordWrapping
         cell.addSubview(lblValue)
         
+        lblTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
+        lblValue.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        var viewsDict = Dictionary <String, UIView>()
+        viewsDict["lblTitle"] = lblTitle
+        viewsDict["lblValue"] = lblValue
+        
+        cell.addConstraints(
+            NSLayoutConstraint.constraintsWithVisualFormat(
+                "H:|-[lblTitle(80)]-[lblValue]-|", options: nil, metrics: nil, views: viewsDict))
+        
+        cell.addConstraints(
+            NSLayoutConstraint.constraintsWithVisualFormat(
+                "V:|-[lblTitle]-|",
+                options: nil, metrics: nil, views: viewsDict))
+        
+        cell.addConstraints(
+            NSLayoutConstraint.constraintsWithVisualFormat(
+                "V:|-[lblValue]-|", options: nil, metrics: nil,
+                views: viewsDict))
+                
         let itemlist: ITEMLIST = ITEMLIST(rawValue: indexPath.row)!
         switch (itemlist) {
         case .Gender:
