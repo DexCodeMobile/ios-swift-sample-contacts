@@ -8,7 +8,7 @@
         <!--Contact View Controller-->
         <scene sceneID="sPp-cz-vwO">
             <objects>
-                <viewController id="hz5-xe-Hdt" customClass="KContactViewController" customModule="SwiftSampleContacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hz5-xe-Hdt" customClass="KContactViewController" customModule="SwiftContacts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1qV-7Y-fYp"/>
                         <viewControllerLayoutGuide type="bottom" id="Vgv-C2-TYA"/>
@@ -39,7 +39,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KContactCollectionReusableView" id="tsE-Do-LCl" customClass="KContactCollectionReusableView" customModule="SwiftSampleContacts" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KContactCollectionReusableView" id="tsE-Do-LCl" customClass="KContactCollectionReusableView" customModule="SwiftContacts" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="64" width="600" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -102,7 +102,7 @@
         <!--Detail View Controller-->
         <scene sceneID="C9S-AY-IUc">
             <objects>
-                <viewController id="T9v-IK-fUR" customClass="KDetailViewController" customModule="SwiftSampleContacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="T9v-IK-fUR" customClass="KDetailViewController" customModule="SwiftContacts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IBx-X8-eIe"/>
                         <viewControllerLayoutGuide type="bottom" id="rBN-ZH-NGF"/>
